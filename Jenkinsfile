@@ -7,14 +7,19 @@ pipeline {
      
 
     stages {
-         stage('Install Dependencies') {
+        stage('Install Dependencies') {
             steps {
                 sh '''
                 sudo apt update
-                sudo apt install -y cmake
+                sudo apt install -y cmake libgtest-dev
+                cd /usr/src/gtest
+                sudo cmake CMakeLists.txt
+                sudo make
+                sudo cp lib/*.a /usr/lib
                 '''
             }
-        }
+        }  
+        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/ishtiyak3000/spe_calculator.git'
