@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.10)
+project(SPE_Calculator)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(calculator main.cpp calculator.cpp)
+
+# Unit Tests
+enable_testing()
+add_executable(test_calculator test_calculator.cpp calculator.cpp)
+target_link_libraries(test_calculator gtest gtest_main pthread)
+add_test(NAME calculator_tests COMMAND test_calculator)
