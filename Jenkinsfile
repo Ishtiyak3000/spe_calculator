@@ -11,7 +11,11 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/ishtiyak3000/spe_calculator.git'
             }
         }
-
+        stage('Setup') {
+    steps {
+        sh 'sudo apt update && sudo apt install cmake -y'
+    }
+}
         stage('Build') {
             steps {
                 sh 'cmake .'
