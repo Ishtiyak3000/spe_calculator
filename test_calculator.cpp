@@ -1,4 +1,5 @@
 #include "calculator.h"
+#include <cmath>  
 #include <gtest/gtest.h>
 TEST(CalculatorTests, SquareRoot) {
     EXPECT_DOUBLE_EQ(squareRoot(16), 4);
