@@ -38,7 +38,7 @@ pipeline {
 
         stage('Deploy with Ansible') {
             environment {
-                ANSIBLE_CRED = credentials('AnsibleCred')
+                ANSIBLE_CRED = credentials('localhost')
             }
             steps {
                 sh 'ansible-playbook -i inventory playbook.yml --extra-vars "ansible_user=$ANSIBLE_CRED_USR ansible_password=$ANSIBLE_CRED_PSW"'
