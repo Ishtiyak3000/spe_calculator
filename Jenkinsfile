@@ -4,6 +4,14 @@ pipeline {
     environment {
         DOCKERHUB_CRED = credentials('DockerHubCred')
     }
+      stage('Install Dependencies') {
+            steps {
+                sh '''
+                sudo apt update
+                sudo apt install -y cmake
+                '''
+            }
+        }
 
     stages {
         stage('Checkout') {
