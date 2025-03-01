@@ -7,18 +7,37 @@
 # RUN cmake .
 # RUN make
 # CMD ["./calculator"]
+# FROM ubuntu:latest
+
+# # Set non-interactive mode for APT to avoid prompts
+# ARG DEBIAN_FRONTEND=noninteractive
+
+# # Use system-installed dependencies instead of reinstalling
+# RUN apt-get update && apt-get install -y g++
+
+# WORKDIR /app
+# COPY . .
+
+# # Use the system's CMake and Google Test instead of reinstalling
+# RUN cmake . && make
+
+# CMD ["./calculator"]
 FROM ubuntu:latest
 
-# Set non-interactive mode for APT to avoid prompts
+# Set non-interactive mode for apt-get
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Use system-installed dependencies instead of reinstalling
-RUN apt-get update && apt-get install -y g++
+# Install necessary build tools
+RUN apt-get update && apt-get install -y \
+    g++ \
+    cmake \
+    libgtest-dev 
 
 WORKDIR /app
 COPY . .
 
-# Use the system's CMake and Google Test instead of reinstalling
+# Build the project
 RUN cmake . && make
 
 CMD ["./calculator"]
+
