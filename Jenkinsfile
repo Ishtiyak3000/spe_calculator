@@ -4,7 +4,10 @@ pipeline {
     environment {
         DOCKERHUB_CRED = credentials('DockerHubCred')
     }
-      stage('Install Dependencies') {
+     
+
+    stages {
+         stage('Install Dependencies') {
             steps {
                 sh '''
                 sudo apt update
@@ -12,8 +15,6 @@ pipeline {
                 '''
             }
         }
-
-    stages {
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/ishtiyak3000/spe_calculator.git'
