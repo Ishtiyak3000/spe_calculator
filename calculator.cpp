@@ -1,25 +1,27 @@
 #include "calculator.h"
+#include <cmath>
 #include <stdexcept>
 
-double Calculator::squareRoot(double x) {
-    if (x < 0) throw std::invalid_argument("Negative input");
+double squareRoot(double x) {
+    if (x < 0) throw std::invalid_argument("Cannot compute square root of negative number!");
     return sqrt(x);
 }
 
-long long Calculator::factorial(int x) {
-    if (x < 0) throw std::invalid_argument("Negative input");
+long long factorial(int x) {
+    if (x < 0) throw std::invalid_argument("Factorial is not defined for negative numbers!");
     long long result = 1;
-    for (int i = 1; i <= x; ++i) {
+    for (int i = 2; i <= x; i++) {
         result *= i;
     }
     return result;
 }
 
-double Calculator::naturalLog(double x) {
-    if (x <= 0) throw std::invalid_argument("Input must be positive");
+double naturalLog(double x) {
+    if (x <= 0) throw std::invalid_argument("Log is not defined for zero or negative values!");
     return log(x);
 }
 
-double Calculator::power(double base, double exponent) {
+double power(double base, double exponent) {
     return pow(base, exponent);
 }
+
