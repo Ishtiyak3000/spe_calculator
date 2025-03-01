@@ -22,12 +22,29 @@
 # RUN cmake . && make
 
 # CMD ["./calculator"]
+# FROM ubuntu:latest
+
+# # Set non-interactive mode for apt-get
+# ARG DEBIAN_FRONTEND=noninteractive
+
+# # Install necessary build tools
+# RUN apt-get update && apt-get install -y \
+#     g++ \
+#     cmake \
+#     libgtest-dev 
+
+# WORKDIR /app
+# COPY . .
+
+# # Build the project
+# RUN cmake . && make
+
+# CMD ["./calculator"]
 FROM ubuntu:latest
 
-# Set non-interactive mode for apt-get
 ARG DEBIAN_FRONTEND=noninteractive
 
-# Install necessary build tools
+# Install necessary tools
 RUN apt-get update && apt-get install -y \
     g++ \
     cmake \
@@ -36,8 +53,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 COPY . .
 
+# Ensure a clean build by removing old CMake cache
+RUN rm -rf CMakeCache.txt CMakeFiles/
+
 # Build the project
 RUN cmake . && make
 
 CMD ["./calculator"]
+
 
