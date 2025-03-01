@@ -1,0 +1,12 @@
+- name: Deploy Calculator Container
+  hosts: localhost
+  tasks:
+    - name: Pull the latest Docker image
+      command: docker pull ishtiyak3000/spe_calculator
+
+    - name: Stop running container (if exists)
+      command: docker rm -f calculator_container
+      ignore_errors: yes
+
+    - name: Run the Docker container
+      command: docker run -d --name calculator_container ishtiyak3000/spe_calculator
