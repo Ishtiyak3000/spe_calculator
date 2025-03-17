@@ -8,7 +8,6 @@ pipeline {
 
     stages {
       
-        
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/ishtiyak3000/spe_calculator.git'
