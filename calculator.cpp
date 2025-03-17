@@ -1,7 +1,7 @@
 #include "calculator.h"
 #include <cmath>
 #include <stdexcept>
-
+//webhook checking
 double squareRoot(double x) {
     if (x < 0) throw std::invalid_argument("Cannot compute square root of negative number!");
     return sqrt(x);
