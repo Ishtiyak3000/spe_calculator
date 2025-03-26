@@ -6,7 +6,7 @@ double squareRoot(double x) {
     if (x < 0) throw std::invalid_argument("Cannot compute square root of negative number!");
     return sqrt(x);
 }
-//hello
+//helloi
 long long factorial(int x) {
     if (x < 0) throw std::invalid_argument("Factorial is not defined for negative numbers!");
     long long result = 1;
